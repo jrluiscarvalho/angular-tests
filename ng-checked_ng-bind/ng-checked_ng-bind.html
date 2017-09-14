@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-checked - ng-bind</title>
+    
+</head>
+<body ng-controller="MainCtrl as vm">
+    
+    <div>
+        <h2>What are your favorite sport?</h2>
+        <div ng-repeat="sport in vm.sports">
+            <label ng-bind="sport.label"></label>
+            <div>
+                With Binding:
+                <input type="checkbox" 
+                    ng-model="sport.selected" 
+                    ng-true="YES"
+                    ng-false="NO">
+            </div>
+            <div>
+                Using ng-checked:
+                <input type="checkbox"
+                        ng-checked="sport.selected === 'YES'">
+            </div>
+            <div>
+                Current state: {{sport.selected}}
+            </div>
+        </div>
+    </div>
+
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('notesApp', [])
+            .controller('MainCtrl', [function(){
+                var vm = this;
+
+                vm.sports = [
+                    {label: 'Basketball', selected:'YES'},
+                    {label: 'Cricket', selected:'NO'},
+                    {label: 'Soccer', selected:'NO'},
+                    {label: 'Swimming', selected:'YES'}
+                ];
+
+            }]);
+    </script>
+</body>
+</html>

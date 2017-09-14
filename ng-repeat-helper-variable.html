@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body ng-controller="MainCtrl as vm">
+    <div ng-repeat="note in vm.notes">
+        <div>First Element: {{$first}}</div>
+        <div>middle Element: {{$middle}}</div>
+        <div>last Element: {{$last}}</div>
+        <div>index Element: {{$index}}</div>
+        <div>even Element: {{$even}}</div>
+        <div>odd Element: {{$odd}}</div>
+        <span class="label">{{note.label}}</span>
+        <span class="status" ng-bind="note.done"></span>
+        <br/><br/>
+    </div>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('notesApp', [])
+            .controller('MainCtrl', [function(){
+                var vm = this;
+                vm.notes = [
+                    {id:1, label:'First Note', done:false},
+                    {id:2, label:'Second Note', done:false},
+                    {id:3, label:'Done Note', done:true},
+                    {id:4, label:'Last Note', done:false}
+                ];
+            }]);
+    </script>
+</body>
+</html>
